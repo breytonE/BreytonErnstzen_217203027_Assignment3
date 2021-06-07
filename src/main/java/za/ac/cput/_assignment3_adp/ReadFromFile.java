@@ -13,7 +13,7 @@ import java.util.Date;
  *
  * @author Breyton Ernstzen (217203027)
  */
-public class ReadFromFile{
+public class ReadFromFile {
     
     private ObjectInputStream inputStream;
    Stakeholder stakeholder;
@@ -59,7 +59,7 @@ public class ReadFromFile{
        customer.add(new Customer("C260", "Ima", "Stewpidas", "Atlantis", "2001-01-27", 1890.70, true));*/
        
        //Sort in ascending order
-       //Collections.sort(customer);
+      // Collections.sort(customer);
     }
     }
 
@@ -227,6 +227,7 @@ public class ReadFromFile{
         }
         System.out.println("Write as a success to supplier file");
      
+
 }
   
     public static void main(String[] args) {
