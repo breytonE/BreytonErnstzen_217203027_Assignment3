@@ -81,6 +81,7 @@ public class Customer extends Stakeholder{
         return String.format("%-10s\t%-10s\t%-10s\t%-15s\t%-10s\tR%-10.2f\t%-10s", super.toString(), getFirstName(), getSurName(),
                 getAddress(), getDateOfBirth(), getCredit(), getCanRent());
     
+    
 }
 }
 
