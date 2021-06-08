@@ -5,7 +5,7 @@ import java.io.*;
 
 /**
  *
- * @author Breyton Ernstzen
+ * @author Breyton Ernstzen (217203027)
  */
 public class CreateStakeholderSer {
     ObjectOutputStream output;
