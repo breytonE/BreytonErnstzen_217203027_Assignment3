@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package za.ac.cput._assignment3_adp;
 
 /**
  *
- * @author Breyton Ernstzen
+ * @author Breyton Ernstzen (217203027)
  */
 public class Customer extends Stakeholder{
     private String firstName;
