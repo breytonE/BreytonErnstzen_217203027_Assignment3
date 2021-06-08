@@ -6,15 +6,14 @@ import java.text.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 
 
 /**
- *
+ *import java.util.Date;
+
  * @author Breyton Ernstzen (217203027)
  */
-public class ReadFromFile {
-    
+public class ReadFromFile extends Stakeholder implements Comparator<Customer> {
     private ObjectInputStream inputStream;
    Stakeholder stakeholder;
    ArrayList<Customer> customer = new ArrayList<>();
@@ -22,7 +21,13 @@ public class ReadFromFile {
     ArrayList<Integer> age = new ArrayList<>();
     int c1,c2,c3,c4,c5,c6;
     int newYear = 2021;
-          
+    
+    @Override
+    public int compare(Customer cus1,Customer cus2){
+        return cus1.getStHolderId().compareTo(cus2.getStHolderId());
+    
+    }
+           
     public void customerArraylist(){
        //Adds objects to the arraylist
         System.out.println("\tCustomer ArrayList");
@@ -33,9 +38,10 @@ public class ReadFromFile {
               stakeholder = (Stakeholder) inputStream.readObject();
               
               if(stakeholder instanceof Customer){
-                  customer.add((Customer) stakeholder);
-                  System.out.println(customer.get(counter));
+                  customer.add((Customer) stakeholder);    
+                  System.out.println(customer.get(counter)); 
                   counter++;
+                  
               }
           }
        } catch(EOFException ioef){
@@ -51,18 +57,9 @@ public class ReadFromFile {
             closeTheFile();
             System.out.println("File has been read and closed");
        
-       /*customer.add(new Customer("C150", "Luke", "Atmyass", "Bellville", "1981-01-27", 1520.50, false));
-       customer.add(new Customer("C130", "Stu", "Padassol", "Sea Point", "1987-05-18", 645.25, true));
-       customer.add(new Customer("C100", "Mike", "Rohsopht", "Bellville", "1993-01-24", 975.10, true));
-       customer.add(new Customer("C300", "Ivana.B", "Withew", "Langa", "1998-07-16", 1190.50, false));
-       customer.add(new Customer("C250", "Eileen", "Sideways", "Nyanga", "1999-11-27", 190.85, true));
-       customer.add(new Customer("C260", "Ima", "Stewpidas", "Atlantis", "2001-01-27", 1890.70, true));*/
-       
-       //Sort in ascending order
-      // Collections.sort(customer);
     }
+      
     }
-
     public void supplierArraylist(){
         
         System.out.println("\tSupplier ArrayList");
@@ -92,13 +89,7 @@ public class ReadFromFile {
             closeTheFile();
             System.out.println("File has been read and closed");
         }
-        /*supplier.add(new Supplier("S270", "Grand Theft Auto", "Toyota", "Mid-size sedan") );
-        supplier.add(new Supplier("S400", "Prime Motors", "Lexus", "Luxury sedan"));
-        supplier.add(new Supplier("S300", "We got Cars", "Toyota", "10-seater minibus"));
-        supplier.add(new Supplier("S350", "Auto Delight", "BMW", "Luxury SUV"));
-        supplier.add(new Supplier("S290", "MotorMania", "Hyundai", "compact budget"));*/
-        //Still needs some code
-          //Collections.sort(supplier);
+          //Collections.sort(supplier);       
     }
     
     //This method opens the file for reading
@@ -146,8 +137,7 @@ public class ReadFromFile {
     public void writeToCustomerFile() {
        Customer c = new Customer();
        customerArraylist();
-       
-       
+             
        c1 = (newYear - 1981);
        c2 = (newYear - 1987);
        c3 = (newYear - 1993);
@@ -174,6 +164,7 @@ public class ReadFromFile {
              bw.newLine();
      
             for(int i=0;i<customer.size();i++){
+                Collections.sort(customer, new ReadFromFile());//Sort by ID
                 bw.write(customer.get(i).getStHolderId() + "\t\t" + customer.get(i).getFirstName() + "\t\t" + customer.get(i).getSurName() + "        " + 
                         customer.get(i).getDateOfBirth() + "\t" + "        " + age.get(i) +"\n" );
             /*for(int i=0;i<customer.size();i++){
@@ -226,10 +217,9 @@ public class ReadFromFile {
             System.out.println(e.getMessage());
         }
         System.out.println("Write as a success to supplier file");
-     
-
-}
-  
+    }
+ 
+        
     public static void main(String[] args) {
         //Customers
         ReadFromFile rff = new ReadFromFile();
