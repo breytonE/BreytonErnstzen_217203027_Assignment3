@@ -138,12 +138,12 @@ public class ReadFromFile extends Stakeholder implements Comparator<Customer> {
        Customer c = new Customer();
        customerArraylist();
              
-       c1 = (newYear - 1981);
+       c1 = (newYear - 1993);
        c2 = (newYear - 1987);
-       c3 = (newYear - 1993);
-       c4 = (newYear - 1998);
-       c5 = (newYear - 1999);
-       c6 = (newYear - 2001);
+       c3 = (newYear - 1981);
+       c4 = (newYear - 1999);
+       c5 = (newYear - 2001);
+       c6 = (newYear - 1998);
        
        age.add(c1);
        age.add(c2);
